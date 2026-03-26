@@ -3,6 +3,7 @@ import { ArrowUp } from 'lucide-react';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import About from './components/About';
 import Stats from './components/Stats';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -35,6 +36,7 @@ function App() {
     };
 
     const animateTrail = () => {
+      if (window.matchMedia("(max-width: 768px)").matches) return; // Disable on mobile
       trailX += (mouseX - trailX) * 0.08;
       trailY += (mouseY - trailY) * 0.08;
       trail.style.transform = `translate(${trailX - 200}px, ${trailY - 200}px)`;
@@ -116,6 +118,8 @@ function App() {
       <Navbar />
       <main className="content-wrapper">
         <Home />
+        <div className="section-divider"><div className="divider-line"></div><span className="divider-label text-mono">00</span><div className="divider-line"></div></div>
+        <About />
         <Stats />
         <div className="section-divider"><div className="divider-line"></div><span className="divider-label text-mono">01</span><div className="divider-line"></div></div>
         <Skills />

@@ -145,6 +145,7 @@ const ParticleBackground = () => {
 
     // Trigger shooting stars at random intervals
     const triggerShootingStar = () => {
+      if (window.matchMedia("(max-width: 768px)").matches) return; // Disable on mobile
       const inactive = shootingStars.find(s => !s.active);
       if (inactive) inactive.activate();
       setTimeout(triggerShootingStar, Math.random() * 4000 + 2000);
@@ -195,7 +196,9 @@ const ParticleBackground = () => {
         shootingStars[i].draw();
       }
       
-      animationFrameId = requestAnimationFrame(animate);
+      if (!window.matchMedia("(max-width: 768px)").matches) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
     animate();

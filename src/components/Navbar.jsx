@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Target, Rocket, Mail, Github, BookOpen, Award, Briefcase, FileDown } from 'lucide-react';
+import { Target, Rocket, Mail, Github, BookOpen, Award, Briefcase, FileDown, User } from 'lucide-react';
 import './Navbar.css';
 
 const navItems = [
+  { href: '#about', icon: User, label: 'ABOUT' },
   { href: '#skills', icon: Target, label: 'SKILLS' },
   { href: '#projects', icon: Rocket, label: 'PROJECTS' },
   { href: '#training', icon: Briefcase, label: 'TRAINING' },
@@ -20,7 +21,7 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
 
       // Active section detection
-      const sections = ['home', 'skills', 'projects', 'training', 'education', 'certifications', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'training', 'education', 'certifications', 'contact'];
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 200) {
