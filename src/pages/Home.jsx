@@ -6,17 +6,20 @@ import './Home.css';
 const roles = ['SOFTWARE ENGINEER', 'MACHINE LEARNING ENGINEER'];
 
 const Home = () => {
+  const [isMobile] = useState(() => window.matchMedia("(max-width: 768px)").matches);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState(roles[0]);
   
   // Magnetic button refs
   const btn1Ref = useMagneticHover(0.2);
   const btn2Ref = useMagneticHover(0.2);
 
-  // Typing effect
+  // Typing effect — disabled on mobile to prevent layout reflow heartbeat
   useEffect(() => {
+    if (isMobile) return; // Static text on mobile
+
     const currentRole = roles[roleIndex];
     let timeout;
 
@@ -38,7 +41,7 @@ const Home = () => {
     }
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, roleIndex]);
+  }, [charIndex, isDeleting, roleIndex, isMobile]);
 
   return (
     <section id="home" className="home-section">

@@ -270,4 +270,12 @@
   .name-title {
     margin-bottom: 20px;
   }
+
+  .typing-cursor {
+    display: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
 }
